@@ -1,31 +1,25 @@
 version: 2.1
-
 orbs:
   browser-tools: circleci/browser-tools@1.2.3
-
 jobs:
-  test:
+  build:
   docker:
   - image: cimg/python:3.10.1-browsers
+  working_directory: ~/repo
   steps:
-  - checkout
   - browser-tools/install-browser-tools
+  - checkout
   - run:
     name: install dependencies
     command: |
-    python3 -m venv venv
-    . venv/bin/activate
-    pip install --upgrade pip
-    pip install -r requirements.txt
+      python3 -m venv venv
+      . venv/bin/activate
+      pip install --upgrade pip
+      pip install -r requirements.txt
   - run:
     name: run test
     command: |
-    . venv/bin/activate
-    pytest test_practiice2.py -v --junit-xml=test-results/regression/results.xml
+      . venv/bin/activate
+      pytest test_practiice2.py -v --junit-xml=test-results/regression/results.xml
   - store_test_results:
     path: test-results
-
-workflows:
-  test-workflow:
-  jobs:
-  - test
