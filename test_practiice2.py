@@ -20,7 +20,6 @@ class TestHotelPlanisphere:
         # 実行環境に合うChromeDriverを自動取得する
         service = Service(ChromeDriverManager().install())
         self.driver = webdriver.Chrome(service=service)
-        self.driver.maximize_window()
 
     def teardown_method(self):
         if self.driver:
