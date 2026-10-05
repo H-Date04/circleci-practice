@@ -7,12 +7,9 @@ jobs:
   test:
   docker:
   - image: cimg/python:3.10.1-browsers
-
   steps:
   - checkout
-
   - browser-tools/install-browser-tools
-
   - run:
     name: install dependencies
     command: |
@@ -20,13 +17,11 @@ jobs:
     . venv/bin/activate
     pip install --upgrade pip
     pip install -r requirements.txt
-
   - run:
     name: run test
     command: |
     . venv/bin/activate
     pytest test_practiice2.py -v --junit-xml=test-results/regression/results.xml
-
   - store_test_results:
     path: test-results
 
