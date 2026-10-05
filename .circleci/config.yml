@@ -17,9 +17,18 @@
     }
     },
     {
+    "run": "mkdir -p test-reports"
+    },
+    {
     "run": {
     "name": "run test",
-    "command": "venv/bin/python -m pytest test_practiice2.py -v --junit-xml=test-results/regression/results.xml"
+    "command": "venv/bin/python -m pytest test_practiice2.py -v --junit-xml=test-results/regression/results.xml --html=test-reports/report.html --self-contained-html"
+    }
+    },
+    {
+    "store_artifacts": {
+    "path": "test-reports/",
+    "destination": "test-reports"
     }
     },
     {
@@ -38,4 +47,3 @@
   }
   }
 }
-
