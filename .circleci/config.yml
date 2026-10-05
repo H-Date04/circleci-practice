@@ -40,7 +40,27 @@
   }
   },
   "workflows": {
-  "test-workflow": {
+  "version": 2,
+  "normal_workflow": {
+  "jobs": [
+    "build"
+  ]
+  },
+  "schedule_workflow": {
+  "triggers": [
+    {
+    "schedule": {
+    "cron": "30 * * * *",
+    "filters": {
+      "branches": {
+      "only": [
+      "main"
+      ]
+      }
+    }
+    }
+    }
+  ],
   "jobs": [
     "build"
   ]
